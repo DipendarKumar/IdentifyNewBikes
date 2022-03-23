@@ -7,13 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
-public class UpcomingBikesPage {
+import BaseClasses.PageBaseClass;
+
+public class UpcomingBikesPage extends PageBaseClass {
 
 	public WebDriver driver;
 	
 	public UpcomingBikesPage(WebDriver driver){
+		super(driver);
 		this.driver = driver;
 	}
 	
@@ -21,9 +23,11 @@ public class UpcomingBikesPage {
 	public WebElement manufacture;
 	
 	public void selectHonda() {
-		Select manufactures = new Select(manufacture);
-		manufactures.selectByVisibleText("Honda");
+
+		selectDropDownValue(manufacture,"Honda");
+		
 	}
+	
 	@FindBy(xpath = "//span[contains(text(),'View More Bikes')]")
 	public WebElement viewMore;
 	
@@ -33,12 +37,11 @@ public class UpcomingBikesPage {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Actions action = new Actions(driver);
 		action.moveToElement(viewMore).click().build().perform();
-		
+
 	}
 	
 	@FindBy(xpath = "//div[@id='carModels']//strong")
@@ -57,14 +60,20 @@ public class UpcomingBikesPage {
 	@FindBy(xpath="//ul[@id='modelList']//li[@data-price]//a")
 	public List<WebElement> names;
 	
+	@FindBy(xpath = "//ul[@id='modelList']/li[@data-price]/div[1]/div[3]/div[2]")
+	public List<WebElement> launchDates;
+	
 	public void under4lacBikes() {
+
 		System.out.println("BIKES UNDER 4LAKH");
 		for(int i=0; i<prices.size(); i++ ) {
 			if(Integer.parseInt(prices.get(i).getAttribute("data-price")) < 400000) {
 				
-				System.out.println(names.get(i).getAttribute("title") + "   ||  " + prices.get(i).getAttribute("data-price") );
+				System.out.println(names.get(i).getAttribute("title") + " || " + prices.get(i).getAttribute("data-price") + " || "+ launchDates.get(i).getText());
 			}
 		}
 	}
+	
+	
 	
 }

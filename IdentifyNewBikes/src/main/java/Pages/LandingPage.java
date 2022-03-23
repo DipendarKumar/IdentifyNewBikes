@@ -2,41 +2,34 @@ package Pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import BaseClasses.PageBaseClass;
+import BaseClasses.TopMenuClass;
 
 public class LandingPage extends PageBaseClass {
 
 	public WebDriver driver;
+	public TopMenuClass topMenu;
 	
 	public LandingPage(WebDriver driver) {
 		super(driver);
+		topMenu = PageFactory.initElements(driver, TopMenuClass.class);
 		this.driver = driver;
 	}
 	
-	@FindBy(xpath = "//a[normalize-space()='New Bikes']")
-	public WebElement newBikes;
-	
-	@FindBy(xpath = "//a[@data-track-component='navigation'][normalize-space()='Upcoming Bikes']")
-	public WebElement upcomingBikes;
-	
+	@FindBy(xpath = "//div[@id='forum_login_wrap_lg']")
+	public WebElement loginSignup;
 
-	public UpcomingBikesPage clickUpcomingBikes() {
-		
-		Actions action = new Actions(driver);
-		action.moveToElement(newBikes).build().perform();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		action.moveToElement(upcomingBikes).click().build().perform();
-
-		return PageFactory.initElements(driver, UpcomingBikesPage.class);
+	public void clickLoginSignupButton() {
+		loginSignup.click();
 	}
+	
+	public TopMenuClass getTopMenu() {
+		return topMenu;
+	}
+	
+	
 	
 }

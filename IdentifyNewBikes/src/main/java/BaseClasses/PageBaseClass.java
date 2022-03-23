@@ -1,23 +1,38 @@
 package BaseClasses;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
-import Pages.LandingPage;
 
-
-public class PageBaseClass extends BaseTestClass  {
+public class PageBaseClass {
 	
-	public WebDriver driver;
+	public static WebDriver driver;
 	
 	public PageBaseClass(WebDriver driver) {
-		this.driver = driver;
+		PageBaseClass.driver = driver;
 	}
 	
-	public LandingPage OpenApplication() {
+	public void selectDropDownValue(WebElement webElement, String value){
+		try {
+			Select select = new Select(webElement);
+			select.selectByVisibleText(value);
 
-		driver.get("https://www.zigwheels.com/");
-		return PageFactory.initElements(driver, LandingPage.class);
-
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
 	}
+	
+	public static void mouseHover(WebElement webElement) {
+		Actions action = new Actions(driver);
+		action.moveToElement(webElement).build().perform();
+	}
+	
+	
+	
+	
+	
+	
+
 }

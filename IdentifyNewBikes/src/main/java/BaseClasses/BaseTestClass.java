@@ -12,9 +12,9 @@ import Pages.LandingPage;
 
 public class BaseTestClass {
 
-	public WebDriver driver;
+	public static WebDriver driver;
 
-	public void invokeBrowser(String browserName) {
+	public static void invokeBrowser(String browserName) {
 
 		try {
 
@@ -41,7 +41,7 @@ public class BaseTestClass {
 		driver.manage().window().maximize();
 	}
 	
-	public LandingPage OpenApplication() {
+	public static LandingPage openApplication() {
 
 		driver.get("https://www.zigwheels.com/");
 		return PageFactory.initElements(driver, LandingPage.class);
