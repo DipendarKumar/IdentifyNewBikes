@@ -1,5 +1,6 @@
 package Pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -23,10 +24,15 @@ public class UsedCarsPage extends PageBaseClass{
 	@FindBy(xpath = "//div[@class='gsc_thin_scroll']/ul/li/label")
 	public List<WebElement> popularModels;
 	
-	public void getPopularModels() {
+	public ArrayList<String> getPopularModels() {
+		
+		ArrayList<String> models = new ArrayList<String>();
+		
 		for(WebElement model : popularModels) {
-			System.out.println(model.getText());
+			models.add(model.getText());
 		}
+		
+		return models;
 	}
 	
 	

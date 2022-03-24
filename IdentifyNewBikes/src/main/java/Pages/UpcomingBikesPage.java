@@ -1,5 +1,6 @@
 package Pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -43,7 +44,8 @@ public class UpcomingBikesPage extends PageBaseClass {
 		action.moveToElement(viewMore).click().build().perform();
 
 	}
-	
+
+/*
 	@FindBy(xpath = "//div[@id='carModels']//strong")
 	public List<WebElement> namelist;
 	
@@ -53,7 +55,7 @@ public class UpcomingBikesPage extends PageBaseClass {
 			System.out.println(name.getText());
 		}
 	}
-	
+*/
 	@FindBy(xpath="//ul[@id=\"modelList\"]//li[@data-price]")
 	public List<WebElement> prices;
 	
@@ -63,16 +65,27 @@ public class UpcomingBikesPage extends PageBaseClass {
 	@FindBy(xpath = "//ul[@id='modelList']/li[@data-price]/div[1]/div[3]/div[2]")
 	public List<WebElement> launchDates;
 	
-	public void under4lacBikes() {
+	public ArrayList<String[]> underFourLakhBikes() {
 
-		System.out.println("BIKES UNDER 4LAKH");
+		ArrayList<String []> bikesDetails = new ArrayList<String []>();
+
 		for(int i=0; i<prices.size(); i++ ) {
+			
 			if(Integer.parseInt(prices.get(i).getAttribute("data-price")) < 400000) {
 				
-				System.out.println(names.get(i).getAttribute("title") + " || " + prices.get(i).getAttribute("data-price") + " || "+ launchDates.get(i).getText());
+				String details[] = new String[3];
+				details[0] = names.get(i).getAttribute("title");
+				details[1] = prices.get(i).getAttribute("data-price");
+				details[2] = launchDates.get(i).getText().substring(14);
+				bikesDetails.add(details);
+				
 			}
 		}
+		
+		return bikesDetails;
 	}
+	
+
 	
 	
 	

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-03-24T19:58:51Z" name="Default suite" finished-at="2022-03-24T19:59:20Z" duration-ms="29364">
+    <groups>
+    </groups>
+    <test started-at="2022-03-24T19:58:51Z" name="Default test" finished-at="2022-03-24T19:59:20Z" duration-ms="29364">
+      <class name="TestCases.UpcomingBikesTest">
+        <test-method signature="upcomingBikesTest()[pri:0, instance:TestCases.UpcomingBikesTest@5c669da8]" started-at="2022-03-24T19:58:51Z" name="upcomingBikesTest" finished-at="2022-03-24T19:59:09Z" duration-ms="17773" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- upcomingBikesTest -->
+      </class> <!-- TestCases.UpcomingBikesTest -->
+      <class name="TestCases.UsedCarsTest">
+        <test-method signature="usedCarsTest()[pri:0, instance:TestCases.UsedCarsTest@31920ade]" started-at="2022-03-24T19:59:09Z" name="usedCarsTest" finished-at="2022-03-24T19:59:20Z" duration-ms="11573" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- usedCarsTest -->
+      </class> <!-- TestCases.UsedCarsTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

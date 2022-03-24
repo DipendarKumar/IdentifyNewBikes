@@ -47,4 +47,9 @@ public class BaseTestClass {
 		return PageFactory.initElements(driver, LandingPage.class);
 
 	}
+	
+	public static void closeBrowser() {
+		driver.quit();
+	}
+
 }
