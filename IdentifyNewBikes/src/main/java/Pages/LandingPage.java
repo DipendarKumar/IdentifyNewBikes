@@ -25,9 +25,26 @@ public class LandingPage extends PageBaseClass {
 	
 	@FindBy(xpath = "//div[@id='forum_login_wrap_lg']")
 	public WebElement loginSignup;
+	
+
 
 	public void clickLoginSignupButton() {
 		loginSignup.click();
+	}
+	
+
+	
+	@FindBy(xpath="//div[@class='fo-nw-step1']//div[@id='googleSignIn']")
+	public WebElement continueWithGoogle;
+	public LoginWithGooglePage clickContinueWithGoogle() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		continueWithGoogle.click();
+		switchWindow();
+		return PageFactory.initElements(driver, LoginWithGooglePage.class);
 	}
 	
 	public TopMenuClass getTopMenu() {
@@ -42,6 +59,21 @@ public class LandingPage extends PageBaseClass {
 		
 		loginClose.click();
 	}
+	
+	@FindBy(xpath ="//*[@id=\"myModal3-modal-content\"]/div[1]/div/div[2]/div[3]/span[2]")
+	public WebElement continueWithFacebook;
+	public LoginWithFacebookPage clickContinueWithFacebook() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		continueWithFacebook.click();
+		switchWindow();
+		return PageFactory.initElements(driver, LoginWithFacebookPage.class);
+	}
+	
+
 	
 	
 }

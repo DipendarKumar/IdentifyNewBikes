@@ -29,6 +29,18 @@ public class PageBaseClass {
 		action.moveToElement(webElement).build().perform();
 	}
 	
+	public void switchWindow() {
+		String originalWindow = driver.getWindowHandle();
+
+
+		for (String windowHandle : driver.getWindowHandles()) {
+		    if(!originalWindow.contentEquals(windowHandle)) {
+		        driver.switchTo().window(windowHandle);
+		        break;
+		    }
+		}
+		
+	}
 
 
 }

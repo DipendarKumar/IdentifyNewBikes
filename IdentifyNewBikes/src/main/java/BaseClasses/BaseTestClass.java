@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterMethod;
 
 import Pages.LandingPage;
 
@@ -23,6 +26,8 @@ public class BaseTestClass {
 						System.getProperty("user.dir") + "\\Drivers\\chromedriver_win32\\chromedriver.exe");
 				ChromeOptions op = new ChromeOptions();
 			    op.addArguments("--disable-notifications");
+			    DesiredCapabilities cap=new DesiredCapabilities();
+			    cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				driver = new ChromeDriver(op);
 			} else if (browserName.equalsIgnoreCase("Mozila")) {
 				System.setProperty("webdriver.gecko.driver",
@@ -48,7 +53,13 @@ public class BaseTestClass {
 
 	}
 	
+	
 	public static void closeBrowser() {
+		driver.close();
+	}
+	
+	@AfterMethod
+	public  void quitBrowser() {
 		driver.quit();
 	}
 
